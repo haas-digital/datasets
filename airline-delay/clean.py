@@ -27,7 +27,7 @@ class Airline:
             if len(args) > 1:
                 raise ValueError('*args must be one number.')
             elif type(args) == int and args > df.shape[0]:
-                raise ValueError('n must be <= {}.'.format(df.shape[0])
+                raise ValueError('n must be <= {}.'.format(df.shape[0]))
             df = self._sample(df, args)
 
         return df
@@ -59,8 +59,7 @@ class Airline:
         return df
 
     def _lowercase_cols(self, df):
-        return df.rename(columns=dict(zip(df.columns, df.columns.str.lower()))
+        return df.rename(columns=dict(zip(df.columns, df.columns.str.lower())))
     
     def _sample(self, df, n):
         return df.sample(n, random_state=RANDOM_SEED)
-         

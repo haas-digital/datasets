@@ -25,9 +25,9 @@ base_params = {
 
 class NOAAApi:
     
-    def __init__(self, token, path='./'):
+    def __init__(self, token, save_dir='./'):
         self.auth_header = {'token': token}
-        self.path = path
+        self.path = save_dir
         
     def get_data(self, start='2021-01-01', end='2021-01-31'):
         if pd.Period(start).year > pd.Period(end).year:
@@ -36,7 +36,7 @@ class NOAAApi:
         elif pd.Period(start).year <= pd.Period(end).year:
             for date in pd.period_range(start=start, end=end, freq="m"):
                 self._get_month(date)
-            print('Weather data successfully saved in {}.'.format(self.path)
+            print('Weather data successfully saved in {}.'.format(self.path))
     
     def _get_month(self, start):
         format_start = start.strftime('%Y-%m-01')
@@ -76,4 +76,4 @@ class NOAAApi:
         
         df.rename(columns={'value':'TMAX'}).drop(columns=['datatype', 'station', 'attributes']).to_csv(fn, index=False)
         
-        print('Weather for {month} written to {file}.'.format(month=start.strftime('%B'), file=fn)
+        print('Weather for {month} written to {file}.'.format(month=start.strftime('%B'), file=fn))
