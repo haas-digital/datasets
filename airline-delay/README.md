@@ -1,12 +1,19 @@
 # Airline flight delays dataset
 
-This repository contains Python code and Jupyter notebooks created for processing and modeling flight delays at San Francisco International Airport.
+The dataset describes on-time performance for flights arriving at San Francisco International Airport along with the corresponding weather information for that day between June 2020 and August 2021.
+
+This repository contains the Python code and Jupyter notebooks created for processing and modeling the raw datasets from the Bureau of Transportation Statistics under the Department of Transportation.
+
 
 ## Metadata
-| Tasks                      | Regression, Classification | Instances       |   |
-|----------------------------|----------------------------|-----------------|---|
-| Attribute Characteristics  | Integer, Real, String      | Number of Attributes |   |
-| Missing Values?            | Yes (See Miscellaneous)    |           |   |
+| Tasks                      | Regression, Classification | Number of Instances  | 11250<sup>1</sup> |
+|:---------------------------|:---------------------------|:---------------------|:--------|
+| Attribute Characteristics  | Integer, Real, String      | Number of Attributes | 37      |
+| Missing Values?            | Yes<sup>2</sup>            |           |   |
+
+<sup>1</sup>The number of instances is not static and can be modified. 
+<sup>2</sup>Missing values are contained to five columns.
+See [Miscellaneous](#misc) for more details.
 
 ## Materials Overview
 | File                  | Description  |
@@ -16,7 +23,7 @@ This repository contains Python code and Jupyter notebooks created for processin
 | `example.ipynb`       | Contains examples of how to use the scripts listed above. |
 | `modeling.ipynb`      | Contains example models performing the associated tasks on the dataset. |
 | `attribute_info.md`   | Contains descriptions of each attribute within the dataset. |
-| `ca_airports.json`    | Contains California airport IDs. Required for `clean.py`.
+| `ca_airports.json`    | Contains California airport IDs. Required for `clean.py`. |
 
 ## Instructor Notes/Usage Guide
 - 
@@ -29,6 +36,8 @@ NOAA - National Climatic Data Center
 - [Climate Data Online](https://www.ncdc.noaa.gov/cdo-web/webservices/)
 
 ## Miscellaneous 
+#### Number of Instances
+
 #### Missing values in dataset
 
 #### Obtaining a NOAA CDO API Token
@@ -51,7 +60,6 @@ NOAA - National Climatic Data Center
     - CRSDepTime
     - DepTime
     - DepDelay
-    - DepDelayMinutes
     - DepDel15
     - TaxiOut
 - Arrival Performance
@@ -59,7 +67,6 @@ NOAA - National Climatic Data Center
     - CRSArrTime
     - ArrTime
     - ArrDelay
-    - ArrDelayMinutes
     - ArrDel15
 - Cancellations and Diversions
     - Cancelled

@@ -2,6 +2,8 @@ import requests
 import pandas as pd
 import time
 import copy
+import os
+from os.path import isfile, join
 
 NOAA_BASE_URL = 'https://www.ncdc.noaa.gov/cdo-web/api/v2/data'
 
@@ -39,9 +41,15 @@ class NOAAApi:
             print('Weather data successfully saved in {}.'.format(self.path))
     
     def _get_month(self, start):
+        f =  start.strftime('%Y-%m') + '.csv'
+        if f in os.listdir(self.path):
+            print('{month} already exists in {fn}'.format(month=start.strftime('%B'), fn=f))
+            return
+        
+        fn = self.path + start.strftime('%Y-%m') + '.csv'
+        
         format_start = start.strftime('%Y-%m-01')
         format_end = start.strftime('%Y-%m-{}'.format(start.days_in_month))
-        fn = self.path + start.strftime('%Y-%m') + '.csv'
 
         params = copy.deepcopy(base_params)
         params['startdate'] = format_start
@@ -64,7 +72,10 @@ class NOAAApi:
         for t in incomplete_data_types:
             params['datatypeid'] = t
             r = requests.get(NOAA_BASE_URL, params=params, headers=self.auth_header)
-            res = r.json()['results']
+            if 'results' not in r.json().keys():
+                res = []
+            else:
+                res = r.json()['results']
             s = pd.Series([i['value'] for i in res], pd.to_datetime([i['date'] for i in res]))
             filled = s.asfreq('d', fill_value=0)
             

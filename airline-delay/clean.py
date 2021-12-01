@@ -12,7 +12,7 @@ class Airline:
         with open(json_fp) as f:
             self.ca_airports = json.load(f)
         
-    def process(self, df_fp, sample=False, *args):
+    def process(self, df_fp, n_sample=750):
         df = pd.read_csv(df_fp)
         
         df = self._drop_unnamed_col(df)
@@ -23,14 +23,12 @@ class Airline:
         df = self._create_external_cause_var(df)
         df = self._lowercase_cols(df)
         
-        if sample:
-            if len(args) > 1:
-                raise ValueError('*args must be one number.')
-            elif type(args) == int and args > df.shape[0]:
-                raise ValueError('n must be <= {}.'.format(df.shape[0]))
-            df = self._sample(df, args)
-
-        return df
+        if n_sample == None:
+            return df
+        elif n_sample > 0 and n_sample < df.shape[0]:
+            return self._sample(df, n_sample)
+        else:
+            raise ValueError('n_sample must be 0 < n <= {}.'.format(df.shape[0]))
     
     def join(self, df, weather_fp):
         weather_df = pd.read_csv(weather_fp)
