@@ -3,15 +3,14 @@
 
 The datasets detail 120,000 anonymized bookings across two different hotels in Portugal between July 2015 and August 2017; H1 is a resort hotel and H2 is a city hotel. 
 
-Both datasets share the same number of attributes.
-
 ## Metadata
 | Tasks                      | Classification          | Number of Instances  | 4000<sup>1</sup> |
 |:---------------------------|:------------------------|:---------------------|:-----|
-| Attribute Characteristics  | Integer, Real, String   | Number of Attributes | 35   |
+| Attribute Characteristics  | Integer, Real, String   | Number of Attributes | 31<sup>2</sup>   |
 | Missing Values?            | N/A                     |                      |      |
 
-<sup>1</sup> The number of instances is not static and can be modified. See [Miscellaneous](#misc) for more details.
+<sup>1</sup>The number of instances is not static and can be modified. See [Miscellaneous](#misc) for more details.
+<sup>2</sup>H2 has an additional attribute - see `attribute_info.md` for more details.
 
 ## Materials Overview
 | File                      | Description  |
