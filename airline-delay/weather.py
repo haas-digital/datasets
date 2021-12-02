@@ -31,7 +31,7 @@ class NOAAApi:
         self.auth_header = {'token': token}
         self.path = save_dir
         
-    def get_data(self, start='2021-01-01', end='2021-01-31'):
+    def get_data(self, start='2021-01', end='2021-01'):
         if pd.Period(start).year > pd.Period(end).year:
             raise ValueError('Years must be in chronological order.')
             

@@ -6,14 +6,16 @@ This repository contains the Python code and Jupyter notebooks created for proce
 
 
 ## Metadata
-| Tasks                      | Regression, Classification | Number of Instances  | 11250<sup>1</sup> |
+| Tasks                      | Regression, Classification | Number of Instances  | <sup>100195</sup> |
 |:---------------------------|:---------------------------|:---------------------|:--------|
-| Attribute Characteristics  | Integer, Real, String      | Number of Attributes | 37      |
+| Attribute Characteristics  | Integer, Real, String      | Number of Attributes | 24      |
 | Missing Values?            | Yes<sup>2</sup>            |           |   |
 
-<sup>1</sup>The number of instances is not static and can be modified. 
+<sup>1</sup>The number of instances can be modified. 
+
 <sup>2</sup>Missing values are contained to five columns.
-See [Miscellaneous](#misc) for more details.
+
+Check the [Usage Guide](#usage) section for more details.
 
 ## Materials Overview
 | File                  | Description  |
@@ -21,21 +23,12 @@ See [Miscellaneous](#misc) for more details.
 | `clean.py`            | Python script to process data from the BTS portal. |
 | `weather.py`          | Python script to obtain data through the NOAA CDO API. Requires an API token. |
 | `example.ipynb`       | Contains examples of how to use the scripts listed above. |
-| `modeling.ipynb`      | Contains example models performing the associated tasks on the dataset. |
+| `models.ipynb`      | Contains example models performing the associated tasks on the dataset. |
 | `attribute_info.md`   | Contains descriptions of each attribute within the dataset. |
 | `ca_airports.json`    | Contains California airport IDs. Required for `clean.py`. |
 
-## Instructor Notes/Usage Guide
-- 
+## Instructor Notes/Usage Guide<a href="#usage"></a>
 
-## Data Sources
-Bureau of Transportation Statistics
-- [Airline On-Time Performance Data](https://www.transtats.bts.gov/DatabaseInfo.asp?QO_VQ=EFD&DB_URL=). Data Table: On-Time : Marketing Carrier On-Time Performance (Beginning January 2018)
-
-NOAA - National Climatic Data Center 
-- [Climate Data Online](https://www.ncdc.noaa.gov/cdo-web/webservices/)
-
-## Miscellaneous 
 #### Number of Instances
 
 #### Missing values in dataset
@@ -50,34 +43,31 @@ NOAA - National Climatic Data Center
     - DayOfMonth
     - DayOfWeek
     - FlightDate
-- Airline
-    - Marketing_Airline_Network
 - Origin
     - OriginAirportID
 - Destination
     - DestAirportID
 - Departure Performance
     - CRSDepTime
-    - DepTime
     - DepDelay
-    - DepDel15
     - TaxiOut
 - Arrival Performance
     - TaxiIn
     - CRSArrTime
-    - ArrTime
     - ArrDelay
     - ArrDel15
 - Cancellations and Diversions
     - Cancelled
     - Diverted
 - Flight Summaries
-    - CRSElapsedTime
-    - ActualElapsedTime
     - Distance
 - Cause of Delay
     - CarrierDleay
-    - WeatherDelay
-    - NASDelay
-    - SecurityDelay
-    - LateAircraftDelay
+
+## Data Sources
+Bureau of Transportation Statistics
+- [Airline On-Time Performance Data](https://www.transtats.bts.gov/DatabaseInfo.asp?QO_VQ=EFD&DB_URL=). Data Table: On-Time : Marketing Carrier On-Time Performance (Beginning January 2018)
+
+NOAA - National Climatic Data Center 
+- [Climate Data Online](https://www.ncdc.noaa.gov/cdo-web/webservices/)
+

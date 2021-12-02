@@ -12,7 +12,7 @@ class Airline:
         with open(json_fp) as f:
             self.ca_airports = json.load(f)
         
-    def process(self, df_fp, n_sample=750):
+    def process(self, df_fp, n_sample=None):
         df = pd.read_csv(df_fp)
         
         df = self._drop_unnamed_col(df)
@@ -27,12 +27,19 @@ class Airline:
             return df
         elif n_sample > 0 and n_sample < df.shape[0]:
             return self._sample(df, n_sample)
+        elif n_sample > df.shape[0]:
+            return df
         else:
             raise ValueError('n_sample must be 0 < n <= {}.'.format(df.shape[0]))
     
     def join(self, df, weather_fp):
         weather_df = pd.read_csv(weather_fp)
-        return df.merge(weather_df, left_on='fl_date', right_on='date')
+        df = df.merge(weather_df, left_on='fl_date', right_on='date')
+        df = df.rename(columns={'TMAX':'max_temp', 'TMIN':'min_temp', 
+                          'TAVG':'avg_temp', 'PRCP':'precip', 
+                          'AWND':'avg_wind_spd', 'WSF2':'wsf2', 'WT01':'fog', 'WT08':'haze'})
+        df = df.drop(columns=['fl_date', 'date', 'origin_airport_id', 'dest_airport_id'])
+        return df 
         
     def _drop_unnamed_col(self, df):
         return df.drop(columns=df.columns[df.columns.str.contains(':')])
@@ -54,6 +61,7 @@ class Airline:
     
     def _create_external_cause_var(self, df):
         df['external_cause'] = np.where(df['CARRIER_DELAY'].isna(), 0, 1)
+        df = df.drop(columns=['CARRIER_DELAY'])
         return df
 
     def _lowercase_cols(self, df):
