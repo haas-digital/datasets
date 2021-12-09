@@ -19,7 +19,7 @@ The datasets detail 120,000 anonymized bookings across two different hotels in P
 | `processing.ipynb`        | Notebook that contains all processing steps. |
 | `models.ipynb`            | Contains example models performing the associated tasks on the dataset. |
 | `attribute_info.md`       | Contains descriptions of each attribute within the dataset. |
-| `h1_s.csv`, `h2_s.csv`    | Processed and sampled (truncated) csvs for both hotels, H1 and H2. |
+| `h1_s.csv`, `h2_s.csv`    | Processed csvs for both hotels, H1 and H2. |
 
 ## Instructor Notes/Usage Guide<a href="#usage"></a>
 #### Number of Instances
@@ -31,5 +31,4 @@ For each hotel, two classifiers are provided in `models.ipynb`: decision tree an
 The models by default use all of the available attributes in the dataset. The models and the attributes used are there to serve as an example of how they can be used in a potential notebook, but you may choose to reduce the number of attributes if there are too many.
 
 ## Data Sources
-Authors: Nuno Antonio, Ana de Almeida, Luis Nunes. 
-DOI: https://doi.org/10.1016/j.dib.2018.11.126
+Authors: Nuno Antonio, Ana de Almeida, Luis Nunes. ([DOI](https://doi.org/10.1016/j.dib.2018.11.126))

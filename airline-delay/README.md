@@ -54,7 +54,15 @@ Otherwise, a sample of size `n_sample` will be returned when the dataset is proc
 In order to use the `NOAAApi` class provided in `weather.py`, you must have a Climate Data Online web services token. You may request one [here](https://www.ncdc.noaa.gov/cdo-web/token). Refer to the section "Getting Weather Data" in `example.ipynb` on more information about obtaining and storing data from the API. 
 
 #### Classroom usage<a href="#class"></a>
+This dataset can illustrate a few concepts:
+1. The data pipeline concept: though obtaining the final dataset is automated through code in `clean.py` and `weather.py`, this dataset illustrates the data pipeline concept through cleaning the flight data, obtaining weather records, and finally joining them together.  This presents an opportunity to use the vanilla dataset (only flight data) in a model, or perform extra data gathering and processing and use the more complex dataset. Some questions to pose:
+    - What is the (processing) cost of scraping weather records? Joining two datasets together at scale?
+    - If you had all information from SFO and you wanted to predict arrival delays, what kinds of variables would you look for? Would you want to use all of the available variables (from BTS/NOAA CDO)? Is that approach appropriate?
+2. Modeling expectations in theory vs. in practice: because this is real-world data, even though the sample model `MSE` and `R^2` scores are acceptable, the residuals don't sum/average to 0 (which in theory should be the case). It might be best to use this particular dataset after linear regression is taught using a dataset that illustrates the statistical properties of a linear regression model well (i.e. a better toy example should be used to instill confidence in students before looking at a dataset that performs that is less optimal). Questions to pose:
+    - What other diagnostics can we use to test model correctness?
+    - When is a model beneficial or detrimental to business decisions? How can you assess its impact (good or bad)? 
 
+This dataset can also be used in a classification model -- instead of `arr_delay`, use `arr_delay15` which is a binary indicator if a flight was late (if it arrived 15 minutes after its scheduled arrival time).
 
 ## Miscellaneous<a href="#misc"></a>
 
@@ -91,9 +99,8 @@ For ease of naming and use when concatenating the tables for each month, it is r
     - CarrierDleay
     
 ## Data Sources<a href="#sources"></a>
-Bureau of Transportation Statistics
-- [Airline On-Time Performance Data](https://www.transtats.bts.gov/DatabaseInfo.asp?QO_VQ=EFD&DB_URL=). Data Table: On-Time : Marketing Carrier On-Time Performance (Beginning January 2018)
+Bureau of Transportation Statistics, [Airline On-Time Performance Data](https://www.transtats.bts.gov/DatabaseInfo.asp?QO_VQ=EFD&DB_URL=). 
+- Data Table: On-Time : Marketing Carrier On-Time Performance (Beginning January 2018)
 
-NOAA - National Climatic Data Center 
-- [Climate Data Online](https://www.ncdc.noaa.gov/cdo-web/webservices/)
+NOAA - National Climatic Data Center, [Climate Data Online](https://www.ncdc.noaa.gov/cdo-web/webservices/).
 
