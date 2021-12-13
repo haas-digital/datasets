@@ -4,10 +4,9 @@
 The datasets detail 120,000 anonymized bookings across two different hotels in Portugal between July 2015 and August 2017; H1 is a resort hotel and H2 is a city hotel. 
 
 ## Metadata
-| Tasks                      | Classification          | Number of Instances  | 39768, 78410<sup>1</sup> |
-|:---------------------------|:------------------------|:---------------------|:-----|
-| Attribute Characteristics  | Integer, Real, String   | Number of Attributes | 31<sup>2</sup>   |
-| Missing Values?            | N/A                     |                      |      |
+| Tasks                      | Attribute Characteristics | Number of Attributes  | Number of Instances | Missing Values? |
+|:---------------------------|:---------------------------|:---------------------|:--------------------|:---------|
+| Classification | Integer, Real, String      | 39768, 78410<sup>1</sup> | 31<sup>2</sup>      | N/A  |
 
 <sup>1</sup>For H1, H2 respectively. Refer to the [Usage Guide](#usage) for more details.
 
@@ -31,4 +30,5 @@ For each hotel, two classifiers are provided in `models.ipynb`: decision tree an
 The models by default use all of the available attributes in the dataset. The models and the attributes used are there to serve as an example of how they can be used in a potential notebook, but you may choose to reduce the number of attributes if there are too many.
 
 ## Data Sources
-Authors: Nuno Antonio, Ana de Almeida, Luis Nunes. ([DOI](https://doi.org/10.1016/j.dib.2018.11.126))
+
+Nuno Antonio, Ana de Almeida, Luis Nunes, Hotel booking demand datasets, Data in Brief, Volume 22, 2019, Pages 41-49, ISSN 2352-3409, https://doi.org/10.1016/j.dib.2018.11.126. ([License](https://creativecommons.org/licenses/by/4.0/))
