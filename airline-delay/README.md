@@ -38,7 +38,7 @@ This repository contains the Python code and Jupyter notebooks created for proce
 ## Instructor Notes/Usage Guide<a href="#usage"></a>
 
 #### Raw data<a href="#rd"></a>
-If you'd like to avoid downloading each month's data individually from the BTS website, you can download a [zip archive](https://drive.google.com/file/d/1dhAY4_fpHktShMtGORWdy8MOwniL7MyK/view?usp=sharing) of the raw data between June 2020 and August 2021. 
+If you'd like to avoid downloading each month's data individually from the BTS website, you can download a [zip archive](https://drive.google.com/file/d/1wOltkgqikNOA0_mA3zZVWhQLJ0n9u7B7/view?usp=sharing) of the raw data between June 2020 and August 2021. 
 
 Otherwise, if you're downloading from the BTS database, a list of the attributes selected from the data portal is below under the [Selecting Columns](#selection) section. There are a few tips when obtaining the flight data this way:
 - In the `Filter Geography` drop down menu, select California. Because the dataset only contains flights arriving into SFO, choosing to only download CA flight data will reduce the memory load when processing the monthly flight data.
